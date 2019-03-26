@@ -34,6 +34,11 @@ export class App extends React.Component<{}, AppState> {
         }, 1000);
     }
 
+    playSound = () => {
+        const audio = document.getElementById("audio") as HTMLAudioElement;
+        audio.play();
+    }
+
     timerTick = () => {
         if (this.state.dueTime) {
             const now = new Date();
@@ -43,8 +48,7 @@ export class App extends React.Component<{}, AppState> {
                 const timeLeft = "00:00:00";
                 document.title = timeLeft;
                 this.setState({ timeLeft, dueTime: undefined });
-                const audio = document.getElementById("audio") as HTMLAudioElement;
-                audio.play();
+                this.playSound();
             }
             else {
                 const d = moment.duration(diff);
@@ -140,6 +144,11 @@ export class App extends React.Component<{}, AppState> {
                     <Row>
                         <Col xs={6}>
                             <div><span>Time left:&nbsp;</span><span>{this.state.timeLeft}</span></div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={6}>
+                            <input type="button" onClick={this.playSound} value="Test Sound" />
                         </Col>
                     </Row>
                 </Container>
