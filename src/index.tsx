@@ -112,6 +112,8 @@ export class App extends React.Component<{}, AppState> {
         });
     }
 
+    handleFocus = (event: React.FormEvent<HTMLInputElement>) => event.currentTarget.select();
+
     render() {
         return (
             <div>
@@ -125,19 +127,19 @@ export class App extends React.Component<{}, AppState> {
                         <Col xs={6}>
                             <Form.Group controlId="itemsHave">
                                 <Form.Label>Items I Have</Form.Label>
-                                <Form.Control type="number" placeholder="#" value={this.state.itemsOwned} onChange={this.changeOwned} />
+                                <Form.Control type="number" placeholder="#" value={this.state.itemsOwned} onChange={this.changeOwned} onFocus={this.handleFocus} />
                             </Form.Group>
                             <Form.Group controlId="itemsNeed">
                                 <Form.Label>Items I Need</Form.Label>
-                                <Form.Control type="number" placeholder="#" value={this.state.itemsNeeded} onChange={this.changeNeeded} />
+                                <Form.Control type="number" placeholder="#" value={this.state.itemsNeeded} onChange={this.changeNeeded} onFocus={this.handleFocus} />
                             </Form.Group>
                             <Form.Group controlId="attackSpeed">
                                 <Form.Label>Total Respawn Rate (seconds)</Form.Label>
-                                <Form.Control type="number" placeholder="seconds" value={this.state.attackSpeed} onChange={this.changeAttack} />
+                                <Form.Control type="number" placeholder="seconds" value={this.state.attackSpeed} onChange={this.changeAttack} onFocus={this.handleFocus} />
                             </Form.Group>
                             <Form.Group controlId="dropMod">
                                 <Form.Label>Quest Item Drop Modifier (%)</Form.Label>
-                                <Form.Control type="number" placeholder="percent" value={this.state.dropModifier} onChange={this.changeDropModifier} />
+                                <Form.Control type="number" placeholder="percent" value={this.state.dropModifier} onChange={this.changeDropModifier} onFocus={this.handleFocus} />
                             </Form.Group>
                         </Col>
                     </Row>
